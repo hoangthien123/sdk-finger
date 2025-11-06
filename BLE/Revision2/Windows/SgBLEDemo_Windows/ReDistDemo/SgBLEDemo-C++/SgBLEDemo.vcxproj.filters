@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="DibClass.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="SgBLEDemo.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="SgBLEDemoDlg.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="sgbledll.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Resource.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="DibClass.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="SgBLEDemo.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="SgBLEDemoDlg.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="sgbledll.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="FMSProtocol.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ibledev.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{e3154890-0c91-457b-aa73-0eaf80529314}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{c060b6c5-18e5-430c-8a1d-773f737a697f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header">
+      <UniqueIdentifier>{7077ad97-41ee-466e-a96a-7c8476f0c6d3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\SgBLEDemo.rc2">
+      <Filter>Resource</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SgBLEDemo.rc">
+      <Filter>Resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\SgBLEDemo.ico">
+      <Filter>Resource</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

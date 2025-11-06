@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_below="@+id/imageView"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="top">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="202dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginLeft="23dp"
+                    android:src="@drawable/bluetooth_logo" />
+
+                <TextView
+                    android:id="@+id/textMAC"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:text="TextView"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                <Button
+                    android:text="Get Firmware Version"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/buttonGetFirmwareVersion"
+                    android:onClick="onClickGetFirmwareVersion" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignLeft="@+id/imageView"
+                    android:layout_alignStart="@+id/imageView"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginStart="14dp">
+
+                    <TextView
+                        android:text="User ID:"
+                        android:layout_height="match_parent"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:id="@+id/textViewUserID"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_alignTop="@+id/edit_text_out"
+                        android:layout_alignLeft="@+id/imageView"
+                        android:layout_alignStart="@+id/imageView"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:layout_width="200dp" />
+
+                    <EditText
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:background="@android:color/holo_blue_dark"
+                        android:textColor="@android:color/white"
+                        android:id="@+id/edit_text_out"
+                        android:inputType="number"
+                        android:layout_below="@+id/button_send"
+                        android:layout_toRightOf="@+id/textViewUserID"
+                        android:layout_toEndOf="@+id/textViewUserID"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginRight="25dp"
+                        android:layout_weight="1" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginTop="15dp"
+                    android:layout_below="@+id/button_send"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true">
+
+                    <Button
+                        android:text="@string/buttonRegister"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/buttonRegister1"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:onClick="onClickRegister1"/>
+
+                    <Button
+                        android:text="@string/buttonRegister2"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/buttonRegister2"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:onClick="onClickRegister2" />
+
+                    <Button
+                        android:text="@string/buttonVerify"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/buttonVerify"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:onClick="onClickVerify" />
+
+                    <Button
+                        android:text="@string/buttonDelete"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/buttonDelete"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:onClick="onClickDelete" />
+                </LinearLayout>
+
+                <Button
+                    android:text="@string/buttonIdentify"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/buttonIdentify"
+                    android:onClick="onClickIdentify" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text=""
+                        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="57dp"
+                        android:id="@+id/textViewStatus"
+                        android:gravity="center"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:layout_height="57dp"
+                        android:src="@drawable/status_blank"
+                        android:id="@+id/imageViewResult"
+                        android:adjustViewBounds="false"
+                        android:layout_width="57dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/buttonCapture"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/buttonCapture"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                            android:onClick="onClickCapture" />
+
+                        <CheckBox
+                            android:id="@+id/checkBoxFullSize"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/buttonCapture"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:text="Full size" />
+
+                        <CheckBox
+                            android:id="@+id/checkBoxWSQFormat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/checkBoxFullSize"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="15dp"
+                            android:text="Use WSQ Format" />
+
+                        <ProgressBar
+                            android:id="@+id/progressBar"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="180dp"
+                            android:layout_height="20dp"
+                            android:layout_below="@+id/checkBoxWSQFormat"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginLeft="10dp"
+                            android:indeterminate="false"
+                            android:max="100"
+                            android:progress="1"/>
+
+                        <TextView
+                            android:text="0 %"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                            android:layout_width="200dp"
+                            android:layout_height="20dp"
+                            android:id="@+id/textProgress"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:layout_below="@+id/progressBar"/>
+
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/imageViewFingerprint"
+                        android:layout_width="150dp"
+                        android:layout_height="200dp"
+                        android:adjustViewBounds="false"
+                        android:src="@drawable/status_blank" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ListView
+                android:layout_height="match_parent"
+        				android:id="@+id/data_value"
+                android:transcriptMode="alwaysScroll"
+                android:layout_alignTop="@+id/imageView"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_width="match_parent" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>
