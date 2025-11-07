@@ -1,9 +1,9 @@
 {
   "name": "@hoangthien123/capacitor-fingerprint-unity20",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Capacitor v7 plugin for Unity20 BLE fingerprint (iOS)",
   "main": "dist/index.js",
-  "types": "dist/definitions.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
     "dist/",
     "ios/",
@@ -11,6 +11,12 @@
     "README.md",
     "Hoangthien123CapacitorFingerprintUnity20.podspec"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json && cp README.md dist/ || true",
     "prepack": "npm run build"
