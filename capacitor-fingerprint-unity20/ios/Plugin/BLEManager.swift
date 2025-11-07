@@ -47,7 +47,10 @@ final class BLEManager: NSObject {
             return
         }
         discovered.removeAll()
-        central.scanForPeripherals(withServices: [cfg.serviceUUID], options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
+        central.scanForPeripherals(
+            withServices: [cfg.serviceUUID],
+            options: [CBCentralManagerScanOptionAllowDuplicatesKey: true]
+        )
     }
 
     func stopScan() {
@@ -88,11 +91,16 @@ final class BLEManager: NSObject {
 extension BLEManager: CBCentralManagerDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
-        case .poweredOn: break
-        case .unsupported: onError?("Bluetooth unsupported")
-        case .unauthorized: onError?("Bluetooth unauthorized")
-        case .poweredOff: onError?("Bluetooth powered off")
-        default: break
+        case .poweredOn:
+            break
+        case .unsupported:
+            onError?("Bluetooth unsupported")
+        case .unauthorized:
+            onError?("Bluetooth unauthorized")
+        case .poweredOff:
+            onError?("Bluetooth powered off")
+        default:
+            break
         }
     }
 
@@ -117,7 +125,8 @@ extension BLEManager: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager,
                         didFailToConnect peripheral: CBPeripheral,
                         error: Error?) {
-        onError?("Failed to connect: \(error?.localizedDescription ?? \"unknown\")")
+        let msg = error?.localizedDescription ?? "unknown"
+        onError?("Failed to connect: \(msg)")
     }
 
     func centralManager(_ central: CBCentralManager,
@@ -133,8 +142,7 @@ extension BLEManager: CBCentralManagerDelegate {
 }
 
 extension BLEManager: CBPeripheralDelegate {
-    func peripheral(_ peripheral: CBPeripheral,
-                    didDiscoverServices error: Error?) {
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if let e = error {
             onError?("Discover services error: \(e.localizedDescription)")
             return
@@ -145,29 +153,27 @@ extension BLEManager: CBPeripheralDelegate {
         }
     }
 
-    func peripheral(_ peripheral: CBPeripheral,
-                    didDiscoverCharacteristicsFor service: CBService,
-                    error: Error?) {
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         if let e = error {
             onError?("Discover characteristics error: \(e.localizedDescription)")
             return
         }
         guard let chars = service.characteristics, let cfg = config else { return }
         for c in chars {
-            if c.uuid == cfg.writeCharUUID { writeChar = c }
+            if c.uuid == cfg.writeCharUUID {
+                writeChar = c
+            }
             if c.uuid == cfg.notifyCharUUID {
                 notifyChar = c
                 peripheral.setNotifyValue(true, for: c)
             }
         }
-        if let conn = connected {
-            onConnected?(conn)
+        if let connected = connected {
+            onConnected?(connected)
         }
     }
 
-    func peripheral(_ peripheral: CBPeripheral,
-                    didUpdateValueFor characteristic: CBCharacteristic,
-                    error: Error?) {
+    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         if let e = error {
             onError?("Notify error: \(e.localizedDescription)")
             return

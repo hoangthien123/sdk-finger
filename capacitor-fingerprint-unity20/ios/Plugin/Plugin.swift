@@ -10,8 +10,8 @@ public class CapacitorFingerprintPlugin: CAPPlugin {
         ble.onDevice = { [weak self] p, rssi in
             self?.notifyListeners("deviceDiscovered", data: [
                 "id": p.identifier.uuidString,
-                "name": p.name ?? NSNull(),
-                "rssi": rssi?.intValue ?? NSNull()
+                "name": p.name ?? "",
+                "rssi": rssi?.intValue ?? 0
             ])
         }
         ble.onConnected = { [weak self] p in
@@ -22,10 +22,8 @@ public class CapacitorFingerprintPlugin: CAPPlugin {
         }
         ble.onData = { [weak self] data in
             let bytes = [UInt8](data)
-            self?.notifyListeners("data", data: [
-                "hex": Hex.fromBytes(bytes),
-                "bytes": bytes
-            ])
+            let hex = bytes.map { String(format: "%02X", $0) }.joined()
+            self?.notifyListeners("data", data: ["hex": hex, "bytes": bytes])
         }
         ble.onError = { [weak self] msg in
             self?.notifyListeners("error", data: ["message": msg])
@@ -36,30 +34,27 @@ public class CapacitorFingerprintPlugin: CAPPlugin {
         guard let serviceUUID = call.getString("serviceUUID"),
               let writeUUID = call.getString("writeCharacteristicUUID"),
               let notifyUUID = call.getString("notifyCharacteristicUUID") else {
-            call.reject("Missing UUIDs")
+            call.reject("Missing UUIDs: serviceUUID, writeCharacteristicUUID, notifyCharacteristicUUID")
             return
         }
         let scanDuration = call.getInt("scanDurationMs") ?? 8000
-        ble.setConfig(serviceUUID: serviceUUID,
-                      writeChar: writeUUID,
-                      notifyChar: notifyUUID,
-                      scanDurationMs: scanDuration)
+        ble.setConfig(serviceUUID: serviceUUID, writeChar: writeUUID, notifyChar: notifyUUID, scanDurationMs: scanDuration)
         call.resolve()
     }
 
     @objc func scan(_ call: CAPPluginCall) {
         guard ble.isPoweredOn() else {
-            call.reject("Bluetooth not powered on")
+            call.reject("Bluetooth is not powered on")
             return
         }
         ble.startScan()
         let duration = ble.config?.scanDuration ?? 8.0
         DispatchQueue.main.asyncAfter(deadline: .now() + duration) { [weak self] in
             self?.ble.stopScan()
-            let devices = self?.ble.discovered.values.map { p in
+            let devices: [[String: Any]] = self?.ble.discovered.values.map { p in
                 [
                     "id": p.identifier.uuidString,
-                    "name": p.name ?? NSNull()
+                    "name": p.name ?? ""
                 ]
             } ?? []
             call.resolve(["devices": devices])
@@ -73,11 +68,11 @@ public class CapacitorFingerprintPlugin: CAPPlugin {
 
     @objc func connect(_ call: CAPPluginCall) {
         guard let deviceId = call.getString("deviceId") else {
-            call.reject("deviceId required")
+            call.reject("deviceId is required")
             return
         }
         let timeoutMs = call.getInt("timeoutMs") ?? 8000
-        ble.connect(id: deviceId, timeout: TimeInterval(timeoutMs)/1000.0)
+        ble.connect(id: deviceId, timeout: TimeInterval(timeoutMs) / 1000.0)
         call.resolve()
     }
 
@@ -88,7 +83,7 @@ public class CapacitorFingerprintPlugin: CAPPlugin {
 
     @objc func sendCommand(_ call: CAPPluginCall) {
         guard let hex = call.getString("hex") else {
-            call.reject("hex required")
+            call.reject("hex is required")
             return
         }
         let frame = call.getBool("frame") ?? false
