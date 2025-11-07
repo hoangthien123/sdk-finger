@@ -1,2 +1,35 @@
-{\n  "name": "@hoangthien123/capacitor-fingerprint-unity20",\n  "version": "0.1.0",
-  "description": "Capacitor v7 plugin for Unity20 BLE fingerprint (iOS)",\n  "main": "dist/index.js",\n  "types": "dist/definitions.d.ts",\n  "files": [\n    "dist/",\n    "ios/",\n    "USAGE.md",\n    "README.md",\n    "Hoangthien123CapacitorFingerprintUnity20.podspec"\n  ],\n  "scripts": {\n    "build": "tsc -p tsconfig.json && cp README.md dist/ || true",\n    "prepack": "npm run build"\n  },\n  "author": "hoangthien123",\n  "license": "MIT",\n  "devDependencies": {\n    "typescript": "^5.6.3",\n    "@capacitor/core": "^7.0.0"\n  },\n  "peerDependencies": {\n    "@capacitor/core": "^7.0.0"\n  },\n  "engines": {\n    "node": ">=18"\n  },\n  "capacitor": {\n    "ios": {\n      "src": "ios"\n    }\n  }\n}
+{
+  "name": "@hoangthien123/capacitor-fingerprint-unity20",
+  "version": "0.1.0",
+  "description": "Capacitor v7 plugin for Unity20 BLE fingerprint (iOS)",
+  "main": "dist/index.js",
+  "types": "dist/definitions.d.ts",
+  "files": [
+    "dist/",
+    "ios/",
+    "USAGE.md",
+    "README.md",
+    "Hoangthien123CapacitorFingerprintUnity20.podspec"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && cp README.md dist/ || true",
+    "prepack": "npm run build"
+  },
+  "author": "hoangthien123",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "@capacitor/core": "^7.0.0"
+  },
+  "peerDependencies": {
+    "@capacitor/core": "^7.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "capacitor": {
+    "ios": {
+      "src": "ios"
+    }
+  }
+}
